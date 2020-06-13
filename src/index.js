@@ -49,6 +49,10 @@ export default class GPayButton extends PureComponent {
         }
       }
     },
+    shippingAddressRequired: PropTypes.bool,
+    shippingAddressParameters: PropTypes.object,
+    shippingOptionRequired: PropTypes.bool,
+    shippingOptionParameters: PropTypes.object,
     allowedPaymentMethods: PropTypes.arrayOf(
       PropTypes.shape({
         type: PropTypes.oneOf(['CARD', 'PAYPAL']),
@@ -91,6 +95,8 @@ export default class GPayButton extends PureComponent {
     type: 'long',
     apiVersion: 2,
     apiVersionMinor: 0,
+    shippingAddressRequired: false,
+    shippingOptionRequired: false,
     allowedPaymentMethods: [
       {
         type: 'CARD',
@@ -185,6 +191,10 @@ export default class GPayButton extends PureComponent {
       apiVersion,
       apiVersionMinor,
       allowedPaymentMethods,
+      shippingAddressRequired,
+      shippingAddressParameters,
+      shippingOptionRequired,
+      shippingOptionParameters,
       onLoadPaymentData,
       onPaymentAuthorized,
       onPaymentDataChanged,
@@ -195,6 +205,10 @@ export default class GPayButton extends PureComponent {
       apiVersion,
       apiVersionMinor,
       allowedPaymentMethods,
+      shippingAddressRequired,
+      shippingAddressParameters,
+      shippingOptionRequired,
+      shippingOptionParameters,
       transactionInfo: {
         currencyCode,
         countryCode,
@@ -280,12 +294,12 @@ export default class GPayButton extends PureComponent {
     return (
       <div className={className} style={style}>
         { this.state.isReadyToPay &&
-          <button
-            onClick={this.payButtonClickListener}
-            type='button'
-            aria-label='Google Pay'
-            className={`gpay-button ${color} ${type}`}
-          />
+        <button
+          onClick={this.payButtonClickListener}
+          type='button'
+          aria-label='Google Pay'
+          className={`gpay-button ${color} ${type}`}
+        />
         }
       </div>
     )
