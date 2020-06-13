@@ -294,12 +294,12 @@ export default class GPayButton extends PureComponent {
     return (
       <div className={className} style={style}>
         { this.state.isReadyToPay &&
-        <button
-          onClick={this.payButtonClickListener}
-          type='button'
-          aria-label='Google Pay'
-          className={`gpay-button ${color} ${type}`}
-        />
+          <button
+            onClick={this.payButtonClickListener}
+            type='button'
+            aria-label='Google Pay'
+            className={`gpay-button ${color} ${type}`}
+          />
         }
       </div>
     )
